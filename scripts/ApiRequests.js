@@ -46,7 +46,7 @@ async function getChapter(id){
 
 async function searchManga(searchWord) {
     try {
-        const url = `http://localhost:8080/api/manga/search?query=${searchWord}`;
+        const url = `http://localhost:8080/api/mangasearch?query=${searchWord}`;
 
         const response = await fetch(url);
         const data = await response.json();
@@ -57,39 +57,69 @@ async function searchManga(searchWord) {
     }
 }
 
-async function mangaLinkCards() {
+async function loadChapterList() {
     const response = await fetch('http://localhost:8080/api/manga');
     const data = await response.json();
 
     const chaptersList = data[0].chapters;
 
-    //Loops through the list with map. For every chapter in the list a html string is built
-    const chapterLinks = chaptersList.map((chapter) => {
+    // 1. Find your container once, outside the loop
+    const container = document.getElementById("texthere2");
 
-        //pulls the id, chapterNumber, and title dynamically
-        const text2 = document.getElementById("texthere2");
-        text2.href = `title/chapter/${chapter.id}.html`;
+    // 2. Loop through the list
+    chaptersList.forEach((chapter) => {
 
+        // Create the paragraph element
+        const paragraph = document.createElement("p");
+
+        // Create the link element
+        const link = document.createElement("a");
+
+        // Set the link's URL
+        link.href = `title/chapter/${chapter.id}.html`;
+
+        // Set the clickable text inside the link
+        link.textContent = `Chapter ${chapter.chapterNumber}: ${chapter.title}`;
+
+        // Put the link INSIDE the paragraph (<p><a>...</a></p>)
+        paragraph.appendChild(link);
+
+        // Put the paragraph INSIDE the container on your webpage
+        container.appendChild(paragraph);
     });
-
-    // .map() returns an array with commas. .join('') turns it into one clean block of HTML.
-    const finalHTML = chapterLinks.join('');
 
     console.log(finalHTML);
 }
 
-//loadMangaLinkCards();
+loadMangaLinkCards();
 async function loadMangaLinkCards() {
-    const url = 'http://localhost:8080/api/manga/';
+    const url = 'http://localhost:8080/api/manga';
     const response = await fetch(url);
     const data = await response.json();
 
-    console.log(data);
+    const gridContainer = document.getElementById("manga-grid");
 
+    // Loops through data and builds the HTML
+    const mangaCardsHTML = data.map((manga) => {
+        return `
+        <div class="col">
+            <div class="card h-100 manga-card position-relative">
+                <img src="${manga.coverImageUrl}" class="card-img-top manga-cover" alt="${manga.title}">
+                <div class="card-body p-2">
+                    <h6 class="card-title text-truncate mb-1">
+                        <a href="manga${manga.id}.html" class="text-decoration-none text-light stretched-link">${manga.title}</a>
+                    </h6>
+                    <p class="card-text text-muted small mb-0">Chapter ${manga.chapter}</p>
+                </div>
+            </div>
+        </div>
+    `;
+    });
+    gridContainer.innerHTML = mangaCardsHTML.join("");
 }
 
 async function loadChapterPages() {
-    const url = 'http://localhost:8080/api/manga/';
+    const url = 'http://localhost:8080/api/manga';
     const response = await fetch(url);
     const data = await response.json();
 
