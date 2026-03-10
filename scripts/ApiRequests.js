@@ -100,7 +100,7 @@ async function loadMangaLinkCards() {
                     <h6 class="card-title text-truncate mb-1">
                         <a href="manga${manga.id}.html" class="text-decoration-none text-light stretched-link">${manga.title}</a>
                     </h6>
-                    <p class="card-text text-muted small mb-0">Chapter ${manga.chapter}</p>
+                    <p class="card-text text-muted small mb-0">Chapter ${manga.chapters.length}</p>
                 </div>
             </div>
         </div>
