@@ -1,4 +1,3 @@
-// 1. Create an async function
 async function getMangaList() {
     const text = document.getElementById("texthere");
     try {
@@ -16,7 +15,6 @@ async function getMangaList() {
         console.log(a);
 
     } catch (error) {
-        // 5. Catch any errors (like if the API is down or internet drops)
         console.error("Error fetching data:", error);
     }
 }
@@ -38,7 +36,7 @@ async function getChapter(id){
 
     });
 
-    // 3. .map() returns an array with commas. .join('') turns it into one clean block of HTML.
+    //.map() returns an array with commas. .join('') turns it into one clean block of HTML.
     const finalHTML = chapterLinks.join('');
 
     console.log(finalHTML);
@@ -63,28 +61,22 @@ async function loadChapterList() {
 
     const chaptersList = data[0].chapters;
 
-    // 1. Find your container once, outside the loop
     const container = document.getElementById("texthere2");
 
-    // 2. Loop through the list
     chaptersList.forEach((chapter) => {
 
-        // Create the paragraph element
         const paragraph = document.createElement("p");
-
-        // Create the link element
         const link = document.createElement("a");
 
-        // Set the link's URL
         link.href = `title/chapter/${chapter.id}.html`;
 
         // Set the clickable text inside the link
         link.textContent = `Chapter ${chapter.chapterNumber}: ${chapter.title}`;
 
-        // Put the link INSIDE the paragraph (<p><a>...</a></p>)
+        // Put the link INSIDE the paragraph <p><a>...</a></p>
         paragraph.appendChild(link);
 
-        // Put the paragraph INSIDE the container on your webpage
+        // Put the paragraph INSIDE the container
         container.appendChild(paragraph);
     });
 
@@ -99,7 +91,6 @@ async function loadMangaLinkCards() {
 
     const gridContainer = document.getElementById("manga-grid");
 
-    // Loops through data and builds the HTML
     const mangaCardsHTML = data.map((manga) => {
         return `
         <div class="col">
