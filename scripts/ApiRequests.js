@@ -20,10 +20,9 @@ async function getMangaList() {
 }
 
 async function getChapter(id){
-    const response = await fetch('http://localhost:8080/api/manga');
+    const response = await fetch(`http://localhost:8080/api/manga/${id}`);
     const data = await response.json();
 
-    const chaptersList = data[0].chapters;
     //const ab = data[0].title;
     //console.log(ab);
 
