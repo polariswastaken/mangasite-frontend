@@ -1,40 +1,131 @@
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Manga Site</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="custom.css" rel="stylesheet">
-    <script src="scripts/ApiRequests.js"></script>
+  <meta charset="UTF-8">
+  <title>Binje</title>
+
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="frontpage.css" rel="stylesheet">
+  <link href="theme.css" rel="stylesheet">
+  <!-- to ensure proper rendering and disables touch zooming -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 </head>
 <body>
-<script src="scripts/ApiRequests.js"></script>
 
+<div class="d-flex">
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary mb-4 border-bottom">
-    <div class="container">
-        <a class="navbar-brand fw-bold" href="">Manga<span class="text-danger">Reader</span></a>
-        <div class="collapse navbar-collapse">
-            <div class="navbar-nav">
-                <a class="nav-link active" href="">Home</a>
-                <a class="nav-link" href="">Latest Updates</a>
-                <a class="nav-link" href="">Browse</a>
-            </div>
-        </div>
+  <div id="sidebar" class="d-flex flex-column p-3 custom-sidebar vh-100">
+
+    <button id="toggle-btn" class="btn d-flex justify-content-end align-items-center">
+      <svg width="25" height="25" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M11 5V19M6 8H8M6 11H8M6 14H8M6.2 19H17.8C18.9201 19 19.4802 19 19.908 18.782C20.2843 18.5903 20.5903 18.2843 20.782 17.908C21 17.4802 21 16.9201 21 15.8V8.2C21 7.0799 21 6.51984 20.782 6.09202C20.5903 5.71569 20.2843 5.40973 19.908 5.21799C19.4802 5 18.9201 5 17.8 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V15.8C3 16.9201 3 17.4802 3.21799 17.908C3.40973 18.2843 3.71569 18.5903 4.09202 18.782C4.51984 19 5.07989 19 6.2 19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="sidebar-text ms-2"></span>
+    </button>
+
+    <span class="sidebar-text-logo sidebar-text ms-2"><h1>🍊binje</h1></span>
+
+    <ul class="nav nav-pills flex-column mb-auto">
+
+    <li class="nav-item mt-3 mb-2 px-3 small text-secondary text-uppercase">
+      <span class="sidebar-text sidebar-text-small">explore</span>
+    </li>
+
+    <li class="nav-item mb-2">
+      <a href="#" class="nav-link d-flex align-items-center gap-2">
+        <svg width="25" height="25" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 6V15H6V11C6 9.89543 8 9 10 11V15H15V6L8 0L1 6Z" fill="currentColor"/>
+        </svg>
+        <span class="sidebar-text">home</span>
+      </a>
+    </li>
+    <li class="nav-item mb-2">
+      <a href="#" class="nav-link d-flex align-items-center gap-2">
+        <img src="resources/svgs/sliders.svg" width="25" height="25">
+        <span class="sidebar-text">browse</span>
+      </a>
+    </li>
+    <li class="nav-item mb-2">
+      <a href="#" class="nav-link d-flex align-items-center gap-2">
+        <svg width="25" height="25" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20.0005 7L14.1543 12.9375C14.0493 13.0441 13.9962 13.0976 13.9492 13.1396C13.1899 13.8193 12.0416 13.8193 11.2822 13.1396C11.2352 13.0976 11.1817 13.0442 11.0767 12.9375C10.9716 12.8308 10.9191 12.7774 10.8721 12.7354C10.1127 12.0557 8.96397 12.0557 8.20461 12.7354C8.15771 12.7773 8.10532 12.8305 8.00078 12.9367L4 17M20.0005 7L20 13M20.0005 7H14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="sidebar-text">top ranking</span>
+      </a>
+    </li>
+
+    <li class="nav-item mt-3 mb-2 px-3 small text-secondary text-uppercase">
+      <span class="sidebar-text sidebar-text-small">MY SHELF</span>
+    </li>
+
+    <li class="nav-item mb-2">
+      <a href="#" class="nav-link d-flex align-items-center gap-2">
+        <img src="resources/svgs/resume.svg" width="25" height="25">
+        <span id="resume-a-link" class="sidebar-text">resume</span>
+      </a>
+    </li>
+    <li class="nav-item mb-2">
+      <a href="#" class="nav-link d-flex align-items-center gap-2">
+        <img src="resources/svgs/bookmark.svg" width="25" height="25">
+        <span class="sidebar-text">bookmarks</span>
+      </a>
+    </li>
+    <li class="nav-item mb-2">
+      <a href="#" class="nav-link d-flex align-items-center gap-2">
+        <img src="resources/svgs/stacked-books.svg" width="25" height="25">
+        <span class="sidebar-text">my stacks</span>
+      </a>
+    </li>
+    <li class="nav-item mb-2">
+      <a href="#" class="nav-link d-flex align-items-center gap-2">
+        <img src="resources/svgs/dropped.svg" width="25" height="25">
+        <span class="sidebar-text">dropped</span>
+      </a>
+    </li>
+
+    </ul>
+
+    <hr class="text-secondary">
+
+    <ul class="nav nav-pills flex-column">
+      <li class="nav-item mt-3 mb-2 px-3 small text-secondary text-uppercase ">
+        <span class="sidebar-text sidebar-text-small">SYSTEM</span>
+      </li>
+
+      <li class="nav-item mb-1">
+        <a href="#" class="nav-link d-flex align-items-center gap-2 text-white">
+          <img src="resources/svgs/cog.svg" width="25" height="25">
+          <span class="sidebar-text">settings</span>
+        </a>
+      </li>
+      <li class="nav-item mb-1">
+        <a href="#" class="nav-link d-flex align-items-center gap-2 text-white">
+          <img src="resources/svgs/light-mode.svg" width="25" height="25">
+          <span class="sidebar-text">theme</span>
+        </a>
+      </li>
+      <li class="nav-item mb-1">
+        <a href="#" class="nav-link d-flex align-items-center gap-2 text-white">
+          <img src="resources/svgs/incognito.svg" width="25" height="25">
+          <span class="sidebar-text">incognito</span>
+        </a>
+      </li>
+    </ul>
+
+  </div>
+
+  <div class="container-fluid">
+    <div id="trending-manga-row" class="row row-cols-1 row-cols-md-3 row-cols-lg-6 p-4">
+      <h2>Manga Updates</h2>
+      <p>manga grid cards here</p>
     </div>
-</nav>
+  </div>
 
-<main class="container">
-    <h2 class="mb-4 border-start border-danger border-4 ps-2">Latest Updates</h2>
 
-    <div class="row row-cols-2 row-cols-md-4 row-cols-lg-5 g-4" id="manga-grid">
-    </div>
-</main>
-
-<script src="js/bootstrap.bundle.min.js"></script>
+</div>
 </body>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="scripts/frontpage.js"></script>
 </html>
-
 
 

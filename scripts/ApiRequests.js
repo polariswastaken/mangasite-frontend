@@ -88,7 +88,7 @@ async function loadMangaLinkCards() {
     const response = await fetch(url);
     const data = await response.json();
 
-    const gridContainer = document.getElementById("manga-grid");
+    const gridContainer = document.getElementById("trending-manga-row");
 
     const mangaCardsHTML = data.map((manga) => {
         return `

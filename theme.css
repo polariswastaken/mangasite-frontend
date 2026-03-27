@@ -1,0 +1,37 @@
+[data-bs-theme="dark"] body {
+    background-color: #110E0D;
+    color: #EAE0D5;
+    font-size: 1rem;
+}
+
+[data-bs-theme="dark"] .card {
+    background-color: #1e1e24;
+    border-color: #333;
+}
+
+[data-bs-theme="dark"] .custom-sidebar {
+    background-color: #1C1715;
+    color: #8B7D74;
+}
+
+[data-bs-theme="dark"] .sidebar-text {
+    font-size: 1.1rem;
+    color: #8B7D74;
+    user-select: none;
+}
+[data-bs-theme="dark"] .sidebar-text:hover {
+    color: #FFC107;
+}
+
+
+[data-bs-theme="dark"] .sidebar-text-small {
+    font-size: 0.8rem;
+}
+
+
+[data-bs-theme="dark"] #resume-a-link {
+    color: #F3A51F;
+}
+[data-bs-theme="dark"] #resume-a-link:hover {
+    color: #FFC107;
+}

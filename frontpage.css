@@ -1,0 +1,50 @@
+/* Force all manga cover images to be uniform rectangles */
+.manga-cover {
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+}
+
+/* Smooth hover animation for the Bootstrap cards */
+.manga-card {
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.manga-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* The default open state */
+#sidebar {
+    width: 250px;
+    transition: all 0.1s ease-in-out; /* Makes the shrinking smooth */
+    min-height: 100vh; /* Makes it take up the full screen height */
+    white-space: nowrap; /* Stops text from wrapping to the next line */
+    overflow-x: hidden; /* Hides the scrollbar when shrinking */
+}
+
+/* The collapsed state */
+#sidebar.collapsed {
+    width: 80px;
+}
+
+/* Hide the text when collapsed */
+#sidebar.collapsed .sidebar-text {
+    display: none;
+}
+#sidebar.collapsed .sidebar-text-logo {
+    justify-content: center;
+}
+
+/* Center all the nav icons when the sidebar is collapsed */
+#sidebar.collapsed .nav-link {
+    justify-content: center;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* Force the toggle button to truly center when collapsed */
+#sidebar.collapsed #toggle-btn {
+    justify-content: center !important;
+}
