@@ -4,6 +4,11 @@
     font-size: 1rem;
 }
 
+[data-bs-theme="dark"] .sidebar-text-logo {
+    font-size: 2rem !important;
+    align-self: flex-start;
+}
+
 [data-bs-theme="dark"] .card {
     background-color: #1e1e24;
     border-color: #333;
@@ -14,18 +19,34 @@
     color: #8B7D74;
 }
 
+[data-bs-theme="dark"] .sidebar-title {
+    background-color: #1e1e24;
+    border-color: #333;
+}
+
+[data-bs-theme="dark"] .sidebar-svg-color {
+    filter: invert(49%) sepia(9%) saturate(517%) hue-rotate(340deg) brightness(99%) contrast(89%);
+}
+
 [data-bs-theme="dark"] .sidebar-text {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: #8B7D74;
     user-select: none;
+    font-family: "Outfit", sans-serif;
 }
 [data-bs-theme="dark"] .sidebar-text:hover {
     color: #FFC107;
 }
 
+[data-bs-theme="dark"] .sidebar img {
+    filter: invert(74%) sepia(84%) saturate(1139%) hue-rotate(352deg) brightness(100%) contrast(103%);
+}
+
 
 [data-bs-theme="dark"] .sidebar-text-small {
-    font-size: 0.8rem;
+    font-size: 0.65rem;
+    font-weight: normal;
+    font-family: "Inter", sans-serif;
 }
 
 
@@ -34,4 +55,19 @@
 }
 [data-bs-theme="dark"] #resume-a-link:hover {
     color: #FFC107;
+}
+
+
+/* Light up the text on hover */
+#sidebar .nav-link:hover .sidebar-text,
+#sidebar .toggle-btn:hover .sidebar-text {
+    color: #FFC107 !important;
+    cursor: pointer;
+}
+
+/* 3. Light up the image (svg) on hover */
+[data-bs-theme="dark"]
+#sidebar .nav-link:hover img,
+#sidebar .toggle-btn:hover img {
+    filter: invert(74%) sepia(84%) saturate(1139%) hue-rotate(352deg) brightness(100%) contrast(103%);
 }

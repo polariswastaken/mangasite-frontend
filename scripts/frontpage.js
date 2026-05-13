@@ -1,6 +1,6 @@
 // Grab the sidebar and the button from the HTML
 const sidebar = document.getElementById('sidebar');
-const toggleBtn = document.getElementById('toggle-btn');
+const toggleBtn = document.querySelector('.toggle-btn')
 
 // When the button is clicked, toggle the 'collapsed' class on or off
 toggleBtn.addEventListener('click', () => {
